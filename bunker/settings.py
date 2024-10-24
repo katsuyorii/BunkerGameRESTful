@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Apps
-
-
+    'game',
 
     # Libraries/frameworks
 
