@@ -2,7 +2,8 @@ import random
 
 from rest_framework import serializers
 
-from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, SpecialAction, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms
+from .services import get_random_serializer_seq_data
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, SpecialAction, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms, Bunker
 
 
 class ProfessionSerializer(serializers.ModelSerializer):
@@ -84,5 +85,32 @@ class BunkerItemsSerializer(serializers.ModelSerializer):
 
 class BunkerRoomsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BunkerItems
+        model = BunkerRooms
         fields = ['name',]
+
+
+class BunkerSerializer(serializers.ModelSerializer):
+    items = serializers.SerializerMethodField()
+    rooms = serializers.SerializerMethodField()
+    area = serializers.SerializerMethodField()
+    sup_food_month = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Bunker
+        fields = ['title', 'description', 'items', 'rooms', 'area', 'sup_food_month',]
+    
+    # Method to get random values for items field
+    def get_items(self, obj):
+        return get_random_serializer_seq_data(BunkerItems, BunkerItemsSerializer)
+    
+    # Method to get random values for rooms field
+    def get_rooms(self, obj):
+        return get_random_serializer_seq_data(BunkerRooms, BunkerRoomsSerializer)
+    
+    # Method to generate random value for area field
+    def get_area(self, obj):
+        return random.randint(45, 150)
+    
+    # Method to generate random value for sup_food_month field
+    def get_sup_food_month(self, obj):
+        return random.randint(1, 12)

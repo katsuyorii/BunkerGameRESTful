@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .services import get_random_serializer_data, get_random_serializer_seq_data
-from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms
-from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer, CatastropheSerializer, BunkerItemsSerializer, BunkerRoomsSerializer
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms, Bunker
+from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer, CatastropheSerializer, BunkerItemsSerializer, BunkerRoomsSerializer, BunkerSerializer
 
 
 class GenderRandomAPIView(APIView):
@@ -108,5 +108,13 @@ class BunkerRoomsRandomAPIView(APIView):
     ''' Get random bunker rooms '''
     def get(self, request):
         serializer_data = get_random_serializer_seq_data(BunkerRooms, BunkerRoomsSerializer)
+
+        return Response(serializer_data)
+    
+
+class BunkerRandomAPIView(APIView):
+    ''' Get random bunker '''
+    def get(self, request):
+        serializer_data = get_random_serializer_data(Bunker, BunkerSerializer)
 
         return Response(serializer_data)
