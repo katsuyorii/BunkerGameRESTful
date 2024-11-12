@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .services import get_random_serializer_data
-from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo
-from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, Catastrophe
+from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer, CatastropheSerializer
 
 
 class GenderRandomAPIView(APIView):
@@ -84,5 +84,13 @@ class AdditionalInfoRandomAPIView(APIView):
     ''' Get random additional information '''
     def get(self, request):
         serializer_data = get_random_serializer_data(AdditionalInfo, AdditionalInfoSerializer)
+
+        return Response(serializer_data)
+
+
+class CatastropheRandomAPIView(APIView):
+    ''' Get random catastrophe '''
+    def get(self, request):
+        serializer_data = get_random_serializer_data(Catastrophe, CatastropheSerializer)
 
         return Response(serializer_data)

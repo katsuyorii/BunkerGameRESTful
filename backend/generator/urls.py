@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import GenderRandomAPIView, ProfessionRandomAPIView, HealthRandomAPIView, HobbyRandomAPIView, PhobiaRandomAPIView, TraitRandomAPIView, PhysiqueRandomAPIView, BaggageRandomAPIView, AdditionalInfoRandomAPIView
+from .views import GenderRandomAPIView, ProfessionRandomAPIView, HealthRandomAPIView, HobbyRandomAPIView, PhobiaRandomAPIView, TraitRandomAPIView, PhysiqueRandomAPIView, BaggageRandomAPIView, AdditionalInfoRandomAPIView, CatastropheRandomAPIView
 
 urlpatterns = [
     path('gender/', GenderRandomAPIView.as_view(), name='gender'),
@@ -12,4 +12,6 @@ urlpatterns = [
     path('physique/', PhysiqueRandomAPIView.as_view(), name='physique'),
     path('baggage/', BaggageRandomAPIView.as_view(), name='baggage'),
     path('info/', AdditionalInfoRandomAPIView.as_view(), name='info'),
+
+    path('catastrophe/', CatastropheRandomAPIView.as_view(), name='catastrophe'),
 ]

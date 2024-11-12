@@ -1,6 +1,8 @@
+import random
+
 from rest_framework import serializers
 
-from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, SpecialAction, AdditionalInfo
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, SpecialAction, AdditionalInfo, Catastrophe
 
 
 class ProfessionSerializer(serializers.ModelSerializer):
@@ -55,3 +57,20 @@ class AdditionalInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdditionalInfo
         fields = ['description',]
+
+
+class CatastropheSerializer(serializers.ModelSerializer):
+    perc_destruction = serializers.SerializerMethodField()
+    perc_survivors = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Catastrophe
+        fields = ['title', 'description', 'perc_destruction', 'perc_survivors',]
+    
+    # Method to generate random value for perc_destruction field
+    def get_perc_destruction(self, obj):
+        return random.randint(60, 99)
+
+    # Method to generate random value for perc_survivors field
+    def get_perc_survivors(self, obj):
+        return random.randint(0, 50)
