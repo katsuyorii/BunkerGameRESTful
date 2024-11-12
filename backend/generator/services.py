@@ -1,3 +1,6 @@
+import random
+
+
 def get_random_serializer_data(model, serializer):
     ''' Method to get random serialized value from database '''
     random_item = model.objects.order_by('?').first()
@@ -8,7 +11,7 @@ def get_random_serializer_data(model, serializer):
 
 def get_random_serializer_seq_data(model, serializer):
     ''' Method to get random serialized 3 values from database '''
-    random_item = model.objects.order_by('?')[:3]
-    serializer_data = serializer(random_item, many=True).data
+    random_items = model.objects.order_by('?')[:3]
+    serializer_seq_data = serializer(random_items, many=True).data
 
-    return serializer_data
+    return serializer_seq_data

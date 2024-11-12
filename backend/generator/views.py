@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .services import get_random_serializer_data, get_random_serializer_seq_data
-from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms, Bunker
-from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer, CatastropheSerializer, BunkerItemsSerializer, BunkerRoomsSerializer, BunkerSerializer
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms, Bunker, SpecialAction
+from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer, CatastropheSerializer, BunkerItemsSerializer, BunkerRoomsSerializer, BunkerSerializer, SpecialActionSerializer
 
 
 class GenderRandomAPIView(APIView):
@@ -116,5 +116,45 @@ class BunkerRandomAPIView(APIView):
     ''' Get random bunker '''
     def get(self, request):
         serializer_data = get_random_serializer_data(Bunker, BunkerSerializer)
+
+        return Response(serializer_data)
+    
+
+class CharacterGenerateAPIView(APIView):
+    ''' Generate character '''
+    def get(self, request):
+        gender = random.choice(['Мужчина', 'Женщина'])
+        age = random.randint(18, 85)
+        fertility = random.randint(0, 4)
+
+        profession = get_random_serializer_data(Profession, ProfessionSerializer)
+        profession_exp = random.randint(1, 20)
+
+        health = get_random_serializer_data(Health, HealthSerializer)
+        physique = get_random_serializer_data(Physique, PhysiqueSerializer)
+        trait = get_random_serializer_data(Trait, TraitSerializer)
+        hobby = get_random_serializer_data(Hobby, HobbySerializer)
+        phobia = get_random_serializer_data(Phobia, PhobiaSerializer)
+        baggage = get_random_serializer_data(Baggage, BaggageSerializer)
+        additional_info = get_random_serializer_data(AdditionalInfo, AdditionalInfoSerializer)
+        special_action_one = get_random_serializer_data(SpecialAction, SpecialActionSerializer)
+        special_action_two = get_random_serializer_data(SpecialAction, SpecialActionSerializer)
+
+        serializer_data = {
+            'gender': gender,
+            'age': age,
+            'fertility': 'Чайлдфри' if fertility == 1 else 'Плодовит',
+            'profession': profession,
+            'profession_exp': profession_exp,
+            'health': health,
+            'physique': physique,
+            'trait': trait,
+            'hobby': hobby,
+            'phobia': phobia,
+            'baggage': baggage,
+            'additional_info': additional_info,
+            'special_action_one': special_action_one,
+            'special_action_two': special_action_two,
+        }
 
         return Response(serializer_data)

@@ -1,8 +1,10 @@
 from django.urls import path
 
-from .views import GenderRandomAPIView, ProfessionRandomAPIView, HealthRandomAPIView, HobbyRandomAPIView, PhobiaRandomAPIView, TraitRandomAPIView, PhysiqueRandomAPIView, BaggageRandomAPIView, AdditionalInfoRandomAPIView, CatastropheRandomAPIView, BunkerItemsRandomAPIView, BunkerRoomsRandomAPIView, BunkerRandomAPIView
+from .views import GenderRandomAPIView, ProfessionRandomAPIView, HealthRandomAPIView, HobbyRandomAPIView, PhobiaRandomAPIView, TraitRandomAPIView, PhysiqueRandomAPIView, BaggageRandomAPIView, AdditionalInfoRandomAPIView, CatastropheRandomAPIView, BunkerItemsRandomAPIView, BunkerRoomsRandomAPIView, BunkerRandomAPIView, CharacterGenerateAPIView
 
 urlpatterns = [
+    path('character/', CharacterGenerateAPIView.as_view(), name='character'),
+
     path('gender/', GenderRandomAPIView.as_view(), name='gender'),
     path('profession/', ProfessionRandomAPIView.as_view(), name='profession'),
     path('health/', HealthRandomAPIView.as_view(), name='health'),
