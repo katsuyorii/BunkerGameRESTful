@@ -1,23 +1,23 @@
 from django.contrib import admin
-from .models import Proffesion, HealthStatus, Hobbies, Phobia, CharacterTrait, Physique, Items, AdditionalInfo, SpecialAction, BunkerRooms, BunkerItems, Bunker, Catastrophe
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, SpecialAction, BunkerRooms, BunkerItems, Bunker, Catastrophe
 
 
 # Переопределние поля NULL на значение - «---пусто---» в админ панеле django.
 admin.AdminSite.empty_value_display = "---пусто---"
 
 
-@admin.register(Proffesion)
-class ProffesionAdmin(admin.ModelAdmin):
+@admin.register(Profession)
+class ProfessionAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-@admin.register(HealthStatus)
-class HealthStatusAdmin(admin.ModelAdmin):
+@admin.register(Health)
+class HealthAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-@admin.register(Hobbies)
-class HobbiesAdmin(admin.ModelAdmin):
+@admin.register(Hobby)
+class HobbyAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
@@ -26,8 +26,8 @@ class PhobiaAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-@admin.register(CharacterTrait)
-class CharacterTraitAdmin(admin.ModelAdmin):
+@admin.register(Trait)
+class TraitAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
@@ -36,8 +36,8 @@ class PhysiqueAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
-@admin.register(Items)
-class ItemsAdmin(admin.ModelAdmin):
+@admin.register(Baggage)
+class BaggageAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 

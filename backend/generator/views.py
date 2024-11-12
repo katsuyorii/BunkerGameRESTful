@@ -3,8 +3,8 @@ import random
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Proffesion, HealthStatus, Hobbies, Phobia, CharacterTrait, Physique, Items, AdditionalInfo
-from .serializers import ProffesionSerializer, HealthStatusSerializer, HobbiesSerializer, PhobiaSerializer, CharacterTraitSerializer, PhysiqueSerializer, ItemsSerializer, AdditionalInfoSerializer
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo
+from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer
 
 
 class GenderRandomAPIView(APIView):
@@ -23,11 +23,11 @@ class GenderRandomAPIView(APIView):
         return Response(serializer_data)
 
 
-class ProffesionRandomAPIView(APIView):
+class ProfessionRandomAPIView(APIView):
     ''' Get random profession '''
     def get(self, request):
-        random_proffesion = Proffesion.objects.order_by('?').first()
-        serializer_data = ProffesionSerializer(random_proffesion).data
+        random_proffesion = Profession.objects.order_by('?').first()
+        serializer_data = ProfessionSerializer(random_proffesion).data
 
         return Response(serializer_data)
 
@@ -35,8 +35,8 @@ class ProffesionRandomAPIView(APIView):
 class HealthRandomAPIView(APIView):
     ''' Get random health '''
     def get(self, request):
-        random_health = HealthStatus.objects.order_by('?').first()
-        serializer_data = HealthStatusSerializer(random_health).data
+        random_health = Health.objects.order_by('?').first()
+        serializer_data = HealthSerializer(random_health).data
 
         return Response(serializer_data)
 
@@ -44,8 +44,8 @@ class HealthRandomAPIView(APIView):
 class HobbyRandomAPIView(APIView):
     ''' Get random hobby '''
     def get(self, request):
-        random_hobby = Hobbies.objects.order_by('?').first()
-        serializer_data = HobbiesSerializer(random_hobby).data
+        random_hobby = Hobby.objects.order_by('?').first()
+        serializer_data = HobbySerializer(random_hobby).data
 
         return Response(serializer_data)
 
@@ -62,8 +62,8 @@ class PhobiaRandomAPIView(APIView):
 class TraitRandomAPIView(APIView):
     ''' Get random character trait '''
     def get(self, request):
-        random_trait = CharacterTrait.objects.order_by('?').first()
-        serializer_data = CharacterTraitSerializer(random_trait).data
+        random_trait = Trait.objects.order_by('?').first()
+        serializer_data = TraitSerializer(random_trait).data
 
         return Response(serializer_data)
 
@@ -80,13 +80,13 @@ class PhysiqueRandomAPIView(APIView):
 class BaggageRandomAPIView(APIView):
     ''' Get random baggage '''
     def get(self, request):
-        random_baggage = Items.objects.order_by('?').first()
-        serializer_data = ItemsSerializer(random_baggage).data
+        random_baggage = Baggage.objects.order_by('?').first()
+        serializer_data = BaggageSerializer(random_baggage).data
 
         return Response(serializer_data)
 
 
-class InfoRandomAPIView(APIView):
+class AdditionalInfoRandomAPIView(APIView):
     ''' Get random additional information '''
     def get(self, request):
         random_info = AdditionalInfo.objects.order_by('?').first()

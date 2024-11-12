@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Proffesion(models.Model):
+class Profession(models.Model):
     ''' Модель для таблицы профессий персонажа '''
     name = models.CharField(verbose_name='Наименование', max_length=255)
 
@@ -13,7 +13,7 @@ class Proffesion(models.Model):
         return self.name
 
 
-class HealthStatus(models.Model):
+class Health(models.Model):
     ''' Модель для таблицы состояния здоровья персонажа '''
     name = models.CharField(verbose_name='Наименование', max_length=255)
 
@@ -25,7 +25,7 @@ class HealthStatus(models.Model):
         return self.name
 
 
-class Hobbies(models.Model):
+class Hobby(models.Model):
     ''' Модель для таблицы хобби и увлечений персонажа '''
     name = models.CharField(verbose_name='Наименование', max_length=255)
 
@@ -49,7 +49,7 @@ class Phobia(models.Model):
         return f'{self.name}'
 
 
-class CharacterTrait(models.Model):
+class Trait(models.Model):
     ''' Модель для таблицы черты характера персонажа '''
     name = models.CharField(verbose_name='Наименование', max_length=255)
 
@@ -73,7 +73,7 @@ class Physique(models.Model):
         return self.name
 
 
-class Items(models.Model):
+class Baggage(models.Model):
     ''' Модель для таблицы предметов инвентаря персонажа '''
     name = models.CharField(verbose_name='Наименование', max_length=255)
 

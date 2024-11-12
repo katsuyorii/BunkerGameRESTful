@@ -1,23 +1,23 @@
 from rest_framework import serializers
 
-from .models import Proffesion, HealthStatus, Hobbies, Phobia, CharacterTrait, Physique, Items, SpecialAction, AdditionalInfo
+from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, SpecialAction, AdditionalInfo
 
 
-class ProffesionSerializer(serializers.ModelSerializer):
+class ProfessionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Proffesion
+        model = Profession
         fields = ['name',]
 
 
-class HealthStatusSerializer(serializers.ModelSerializer):
+class HealthSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HealthStatus
+        model = Health
         fields = ['name',]
 
 
-class HobbiesSerializer(serializers.ModelSerializer):
+class HobbySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Hobbies
+        model = Hobby
         fields = ['name',]
 
 
@@ -27,9 +27,9 @@ class PhobiaSerializer(serializers.ModelSerializer):
         fields = ['name',]
 
 
-class CharacterTraitSerializer(serializers.ModelSerializer):
+class TraitSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CharacterTrait
+        model = Trait
         fields = ['name',]
 
 
@@ -39,9 +39,9 @@ class PhysiqueSerializer(serializers.ModelSerializer):
         fields = ['name',]
 
 
-class ItemsSerializer(serializers.ModelSerializer):
+class BaggageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Items
+        model = Baggage
         fields = ['name',]
 
 
