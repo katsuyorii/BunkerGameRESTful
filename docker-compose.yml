@@ -24,3 +24,14 @@ services:
       .env
     depends_on:
       - db
+  
+  frontend:
+    build: ./frontend
+    container_name: react
+    restart: always
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
