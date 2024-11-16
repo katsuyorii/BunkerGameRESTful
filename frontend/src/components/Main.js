@@ -11,7 +11,7 @@ function Main() {
         <div class="wrapper">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/generator" element={<Generator />} />
+            <Route path="/generator/:category" element={<Generator />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/contacts" element={<Contacts />} />
           </Routes>
