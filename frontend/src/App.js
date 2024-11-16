@@ -1,12 +1,17 @@
 import React from 'react';
 import './styles/reset.css';
-import './styles/main.css'; 
+import './styles/main.css';
+import Header from './components/Header';
+import Main from './components/Main';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
 
