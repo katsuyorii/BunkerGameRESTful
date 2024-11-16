@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -6,12 +7,12 @@ function Header() {
             <div class="wrapper">
                 <div class="header-flex">
                     <div class="header-flex-nav">
-                        <a href="/#"><img class="header-flex-nav-logo" src="/images/logo.png" alt="Logo"/></a>
+                        <Link to="/"><img class="header-flex-nav-logo" src="/images/logo.png" alt="Logo"/></Link>
                         <div class="header-flex-nav-block">
                             <ul class="header-flex-nav-block-list">
-                                <li><a href="/#" class="header-flex-nav-block-list-item">Генератор</a></li>
-                                <li><a href="/#" class="header-flex-nav-block-list-item">Правила игры</a></li>
-                                <li><a href="/#" class="header-flex-nav-block-list-item">Контакты</a></li>
+                                <li><Link to="/" class="header-flex-nav-block-list-item">Генератор</Link></li>
+                                <li><Link to="/rules" class="header-flex-nav-block-list-item">Правила игры</Link></li>
+                                <li><Link to="/contacts" class="header-flex-nav-block-list-item">Контакты</Link></li>
                             </ul>
                         </div>
                     </div>
