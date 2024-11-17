@@ -128,8 +128,6 @@ class CharacterGenerateAPIView(APIView):
         fertility = random.randint(0, 4)
 
         profession = get_random_serializer_data(Profession, ProfessionSerializer)
-        profession_exp = random.randint(1, 20)
-
         health = get_random_serializer_data(Health, HealthSerializer)
         physique = get_random_serializer_data(Physique, PhysiqueSerializer)
         trait = get_random_serializer_data(Trait, TraitSerializer)
@@ -145,7 +143,6 @@ class CharacterGenerateAPIView(APIView):
             'age': age,
             'fertility': 'Чайлдфри' if fertility == 1 else 'Плодовит',
             'profession': profession,
-            'profession_exp': profession_exp,
             'health': health,
             'physique': physique,
             'trait': trait,

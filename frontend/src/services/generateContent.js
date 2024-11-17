@@ -18,7 +18,7 @@ export async function generateContent(category) {
                 content = (
                     <>
                         <p >👨 Пол, возраст: {data.gender}, {data.age}, {data.fertility}</p >
-                        <p>💼 Профессия, стаж (лет.): {data.profession.name}, {data.profession_exp}</p>
+                        <p>💼 Профессия, стаж (лет.): {data.profession.name}, {data.profession.exp}</p>
                         <p>🏥 Состояние здоровья: {data.health.name}</p>
                         <p>🎨 Хобби: {data.hobby.name}</p>
                         <p>👻 Фобия: аквафобия - {data.phobia.name}</p>
@@ -43,7 +43,7 @@ export async function generateContent(category) {
                 break;
             case 'profession':
                 content = (
-                    <p>💼 Профессия: {data.name}</p>
+                    <p>💼 Профессия: {data.name}, {data.exp}</p>
                 );
                 break;
             case 'hobby':

@@ -7,9 +7,15 @@ from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage,
 
 
 class ProfessionSerializer(serializers.ModelSerializer):
+    exp = serializers.SerializerMethodField()
+
     class Meta:
         model = Profession
-        fields = ['name',]
+        fields = ['name', 'exp',]
+    
+    # Method to generate random value for exp field
+    def get_exp(self, obj):
+        return random.randint(1, 20)
 
 
 class HealthSerializer(serializers.ModelSerializer):
