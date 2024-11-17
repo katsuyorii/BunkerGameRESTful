@@ -88,7 +88,7 @@ function Home() {
             <img class="main-flex-item-img" src="/images/icons/info.png" alt="AddInfo"/>
           </div>
           <p class="main-flex-item-title">Доп. инфо</p>
-          <Link to="/generator/addinfo" class="main-flex-item-btn">Сгенерировать</Link>
+          <Link to="/generator/info" class="main-flex-item-btn">Сгенерировать</Link>
         </div>
         <div class="main-flex-item">
           <div class="main-flex-item-block">
