@@ -12,7 +12,14 @@ export async function generateContent(category) {
                 content = data;
                 break;
             case 'catastrophe':
-                content = data;
+                content = (
+                    <>
+                        <p>📛 Наименование катастрофы: {data.title}</p>
+                        <p>📜 Описание катастрофы: {data.description}</p>
+                        <p>🚧 Процент разрушения на поверхности: {data.perc_destruction}%</p>
+                        <p>☠️ Процент выживших людей на поверхности: {data.perc_survivors}%</p>
+                    </>
+                )
                 break;
             case 'character':
                 content = (
