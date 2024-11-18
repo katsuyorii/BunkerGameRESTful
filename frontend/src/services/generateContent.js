@@ -9,12 +9,25 @@ export async function generateContent(category) {
 
         switch (category) {
             case 'bunker':
-                content = data;
+                content = (
+                    <>
+                        <p>📛 Наименование бункера: {data.title}</p>
+                        <p>📜 Описание бункера: {data.description}</p>
+                        <p>📦 Предметы в бункере: {data.items.map((item, index) => (
+                            <li key={index}>{item.name}</li>
+                        ))}</p>
+                        <p>🏠 Комнаты в бункере: {data.rooms.map((room, index) => (
+                            <li key={index}>{room.name}</li>
+                        ))}</p>
+                        <p>📐 Площадь бункера: {data.area} кв.м.</p>
+                        <p>🥕 Количество еды в бункере: {data.sup_food_month} мес.</p>
+                    </>
+                )
                 break;
             case 'catastrophe':
                 content = (
                     <>
-                        <p>📛 Наименование катастрофы: {data.title}</p>
+                        <p>💥 Наименование катастрофы: {data.title}</p>
                         <p>📜 Описание катастрофы: {data.description}</p>
                         <p>🚧 Процент разрушения на поверхности: {data.perc_destruction}%</p>
                         <p>☠️ Процент выживших людей на поверхности: {data.perc_survivors}%</p>
@@ -84,10 +97,18 @@ export async function generateContent(category) {
                 );
                 break;
             case 'rooms':
-                content = data;
+                content = (
+                    <p>🏠 Комнаты в бункере: {data.map((room, index) => (
+                        <li key={index}>{room.name}</li>
+                    ))}</p>
+                );
                 break;
             case 'items':
-                content = data;
+                content = (
+                    <p>📦 Предметы в бункере: {data.map((item, index) => (
+                        <li key={index}>{item.name}</li>
+                    ))}</p>
+                );
                 break;
             default:
                 content = '';
