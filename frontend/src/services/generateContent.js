@@ -13,12 +13,14 @@ export async function generateContent(category) {
                     <>
                         <p>📛 Наименование бункера: {data.title}</p>
                         <p>📜 Описание бункера: {data.description}</p>
-                        <p>📦 Предметы в бункере: {data.items.map((item, index) => (
-                            <li key={index}>{item.name}</li>
-                        ))}</p>
-                        <p>🏠 Комнаты в бункере: {data.rooms.map((room, index) => (
-                            <li key={index}>{room.name}</li>
-                        ))}</p>
+                        <p>📦 Предметы в бункере:</p>
+                        {data.items.map((item, index) => (
+                            <li class="item-li" key={index}> - {item.name}</li>
+                        ))}
+                        <p>🏠 Комнаты в бункере:</p> 
+                        {data.rooms.map((room, index) => (
+                            <li class="item-li" key={index}> - {room.name}</li>
+                        ))}
                         <p>📐 Площадь бункера: {data.area} кв.м.</p>
                         <p>🥕 Количество еды в бункере: {data.sup_food_month} мес.</p>
                     </>
@@ -98,16 +100,22 @@ export async function generateContent(category) {
                 break;
             case 'rooms':
                 content = (
-                    <p>🏠 Комнаты в бункере: {data.map((room, index) => (
-                        <li key={index}>{room.name}</li>
-                    ))}</p>
+                    <>
+                    <p>🏠 Комнаты в бункере:</p> 
+                    {data.map((room, index) => (
+                        <li class="item-li" key={index}> - {room.name}</li>
+                    ))}
+                    </>
                 );
                 break;
             case 'items':
                 content = (
-                    <p>📦 Предметы в бункере: {data.map((item, index) => (
-                        <li key={index}>{item.name}</li>
-                    ))}</p>
+                    <>
+                    <p>📦 Предметы в бункере:</p> 
+                    {data.map((item, index) => (
+                        <li class="item-li" key={index}> - {item.name}</li>
+                    ))}
+                    </>
                 );
                 break;
             default:

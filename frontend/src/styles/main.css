@@ -68,6 +68,10 @@ html, body {
     margin-bottom: 20px;
 }
 
+.item-li {
+    list-style-type: none;
+}
+
 
 /*
     Стили для шапки сайта
