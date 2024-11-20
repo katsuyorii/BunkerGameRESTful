@@ -246,14 +246,48 @@ html, body {
     transition: 0.3s linear;
 }
 
-.main-email {
-    margin-top: 10px;
-    font-size: 19px;
+.main-contacts-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    border: 1px solid var(--border-block);
+    border-radius: 5px;
+    padding: 15px 15px;
+    box-shadow: -3px 5px 16px rgba(0, 0, 0, 0.11);
+    color: #000000;
 }
 
-.main-email-link {
+.main-contact {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.main-contact-link {
     color: var(--link-text);
     font-weight: 500;
+}
+
+.main-rules-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.main-rules-block-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.main-rules-block-item-title {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.main-rules-block-item-text {
+    font-size: 18px;
 }
 
 

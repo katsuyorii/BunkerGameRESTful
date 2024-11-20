@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { generateData } from '../services/generateData';
 import { generateContent } from '../services/generateContent';
@@ -8,14 +8,14 @@ function Generator() {
   const { title } = generateData(category);
   const [content, setContent] = useState(null);
 
+  const fetchData = useCallback(async () => {
+    const result = await generateContent(category);
+    setContent(result);
+  }, [category]);
+
   useEffect(() => {
-    const fetchData = async () => {
-        const result = await generateContent(category);
-        setContent(result);
-    };
-    
     fetchData();
-}, [category]);
+  }, [fetchData]);
 
   return (
     <>
@@ -24,7 +24,7 @@ function Generator() {
         { content }
       </div>
       <div class="main-row">
-        <Link class="main-row-btn">Сгенерировать</Link>
+        <Link onClick={fetchData} class="main-row-btn">Сгенерировать</Link>
       </div>
     </>
   )
