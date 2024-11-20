@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "Building React app..."
-npm start
+npm run build
