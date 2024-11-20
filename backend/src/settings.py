@@ -41,9 +41,12 @@ INSTALLED_APPS = [
 
     # Apps
     'generator',
+    'accounts',
+    'authorization',
 
     # Libraries and frameworks
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
 ]
 
@@ -143,6 +146,22 @@ MEDIA_URL = 'media/'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost",
 ]
+
+
+# Overrate User model
+
+AUTH_USER_MODEL = 'accounts.User'
+
+
+# REST Framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 
 # Default primary key field type
