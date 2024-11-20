@@ -12,10 +12,7 @@ services:
     build: ./backend
     container_name: django
     restart: always
-    command: >
-      sh -c "python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py runserver 0.0.0.0:8000"
+    command: sh entrypoint.sh
     volumes:
       - ./backend:/app
     ports:
@@ -29,6 +26,7 @@ services:
     build: ./frontend
     container_name: react
     restart: always
+    command: sh entrypoint.sh
     volumes:
       - ./frontend:/app
     ports:
