@@ -3,7 +3,7 @@ import random
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .services import get_random_serializer_data, get_random_serializer_seq_data
+from .services import get_random_serializer_data, get_random_serializer_seq_data, save_character_auth_user
 from .models import Profession, Health, Hobby, Phobia, Trait, Physique, Baggage, AdditionalInfo, Catastrophe, BunkerItems, BunkerRooms, Bunker, SpecialAction
 from .serializers import ProfessionSerializer, HealthSerializer, HobbySerializer, PhobiaSerializer, TraitSerializer, PhysiqueSerializer, BaggageSerializer, AdditionalInfoSerializer, CatastropheSerializer, BunkerItemsSerializer, BunkerRoomsSerializer, BunkerSerializer, SpecialActionSerializer
 
@@ -153,5 +153,7 @@ class CharacterGenerateAPIView(APIView):
             'special_action_one': special_action_one,
             'special_action_two': special_action_two,
         }
+
+        save_character_auth_user(serializer_data)
 
         return Response(serializer_data)

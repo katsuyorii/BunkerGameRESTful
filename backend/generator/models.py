@@ -1,4 +1,5 @@
 from django.db import models
+from accounts.models import User
 
 
 class Profession(models.Model):
@@ -157,3 +158,70 @@ class Catastrophe(models.Model):
     
     def __str__(self):
         return f'{self.title} - {self.description}'
+
+
+class UserGenerationCharacter(models.Model):
+    ''' Модель для таблицы списка хранения генераций персонажей пользователя '''
+    user = models.ForeignKey(verbose_name='Пользователь', to=User, on_delete=models.CASCADE)
+    gender = models.CharField(verbose_name='Пол персонажа', max_length=255)
+    age = models.PositiveSmallIntegerField(verbose_name='Возраст персонажа')
+    fertility = models.CharField('Способность к оплодотворению', max_length=255)
+    profession = models.CharField('Профессия', max_length=255)
+    health = models.CharField('Состояние здоровья', max_length=255)
+    physique = models.CharField('Телосложение', max_length=255)
+    trait = models.CharField('Черта характера', max_length=255)
+    hobby = models.CharField('Хобби', max_length=255)
+    phobia = models.CharField('Фобия', max_length=255)
+    baggage = models.CharField('Багаж', max_length=255)
+    additional_info = models.CharField('Доп. информация', max_length=255)
+    special_action_one = models.CharField('Спец. умение №1', max_length=255)
+    special_action_two = models.CharField('Спец. умение №1', max_length=255)
+
+    class Meta:
+        verbose_name = 'Генерация персонажа пользователя'
+        verbose_name_plural = 'Генерации персонажей пользователей'
+    
+    def __str__(self):
+        return {self.user.email}
+    
+
+class UserBunker(models.Model):
+    ''' Модель для таблицы хранения генераций бункера пользователя '''
+    user = models.ForeignKey(verbose_name='Пользователь', to=User, on_delete=models.CASCADE)
+    bunker = models.ForeignKey(verbose_name='Бункер', to=Bunker, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(verbose_name='Дата и время генерации', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Cписок генерация бункера пользователя'
+        verbose_name_plural = 'Список генерации бункера пользователями'
+
+    def __str__(self):
+        return f'{self.user.email} | {self.bunker.title}'
+
+
+class UserCatastrophe(models.Model):
+    ''' Модель для таблицы хранения генераций катастроф пользователя '''
+    user = models.ForeignKey(verbose_name='Пользователь', to=User, on_delete=models.CASCADE)
+    catastrophe = models.ForeignKey(verbose_name='Бункер', to=Catastrophe, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(verbose_name='Дата и время генерации', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Генерация катастрофы пользователя'
+        verbose_name_plural = 'Генерации катастроф пользователями'
+
+    def __str__(self):
+        return f'{self.user.email} | {self.catastrophe.title}'
+    
+
+class UserCharacter(models.Model):
+    ''' Модель для таблицы хранения генераций персонажа пользователя '''
+    user = models.ForeignKey(verbose_name='Пользователь', to=User, on_delete=models.CASCADE)
+    character = models.ForeignKey(verbose_name='Персонаж', to=UserGenerationCharacter, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(verbose_name='Дата и время генерации', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Генерация бункера пользователя'
+        verbose_name_plural = 'Генерации бункера пользователями'
+
+    def __str__(self):
+        return f'{self.user.email} | {self.bunker.title}'

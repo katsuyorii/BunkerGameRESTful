@@ -1,6 +1,3 @@
-import random
-
-
 def get_random_serializer_data(model, serializer):
     ''' Method to get random serialized value from database '''
     random_item = model.objects.order_by('?').first()
@@ -15,3 +12,8 @@ def get_random_serializer_seq_data(model, serializer):
     serializer_seq_data = serializer(random_items, many=True).data
 
     return serializer_seq_data
+
+
+def save_character_auth_user(serializer_data):
+    ''' Method of saving generated character by authorized user '''
+    pass
